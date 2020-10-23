@@ -1,32 +1,10 @@
+import { NORMAL_USER } from '../../config/accounts';
+
 const { I } = inject();
-// Add in your custom step files
 
-Given('I have an account', () => {});
-
-When('I visit login page', () => {
+Given('I logged into a normal user account', () => {
   I.amOnPage('/login');
-});
-
-Then(
-  'I try to login with {string} and {string}',
-  (phone: string, password: string) => {
-    console.log('phone, password', phone, password);
-
-    I.fillField('phone', phone);
-    I.fillField('password', password);
-    I.click('.ant-btn');
-  }
-);
-
-Then('I logined {string}', (status: string) => {
-  if (status === 'success') {
-    I.see('后台管理');
-  }
-  if (status === 'password error') {
-    I.see('密码错误');
-  }
-
-  if (status === 'not exist') {
-    I.see('用户不存在');
-  }
+  I.fillField('phone', NORMAL_USER.phone);
+  I.fillField('password', NORMAL_USER.password);
+  I.click('登 录');
 });

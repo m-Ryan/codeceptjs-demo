@@ -10,3 +10,5 @@ declare namespace CodeceptJS {
     interface Actions {}
   }
 }
+
+declare function tryTo(fn: () => any): Promise<boolean>;
